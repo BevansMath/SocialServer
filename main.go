@@ -1,6 +1,4 @@
-package main 
-
-package database
+package main
 
 import (
 	"fmt"
