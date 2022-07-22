@@ -5,13 +5,15 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/BevansMath/SocialServer/internal/database"
 )
 
 func main() {
 	m := http.NewServeMux()
 
 	m.HandleFunc("/", testHandler)
-
+	database.NewClient("github.com/BevansMath/SocialServer/internal/database")
 	const addr = "localhost:8080"
 	serv := http.Server{
 		Addr:    addr,
