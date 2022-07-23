@@ -45,3 +45,13 @@ func (c Client) createDB() error {
 	}
 	return nil
 }
+
+func (c Client) readDB() (databaseSchema, error) {
+	dat, err := os.ReadFile(c.dbPath)
+	if err != nil {
+		return databaseSchema{}, err
+	}
+	db := databaseSchema{}
+	err = json.Unmarshal(dat, &db)
+	return db, err
+}
