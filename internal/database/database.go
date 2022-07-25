@@ -47,7 +47,7 @@ func (c Client) createDB() error {
 }
 
 func (c Client) readDB() (databaseSchema, error) {
-	dat, err := os.ReadFile(c.dbPath)
+	dat, err := ioutil.ReadFile(c.dbPath)
 	if err != nil {
 		return databaseSchema{}, err
 	}
