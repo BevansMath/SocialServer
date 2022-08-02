@@ -47,7 +47,7 @@ func main() {
 
 	_, err = c.GetUser("test@example.com")
 	if err == nil {
-		log.Fatal("User not retrieved")
+		log.Fatal("User unable to be retrieved")
 
 	}
 	fmt.Println("Confirmed removal of user...")

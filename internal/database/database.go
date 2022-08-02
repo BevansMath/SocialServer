@@ -58,10 +58,11 @@ func (c Client) readDB() (databaseSchema, error) {
 
 func (c Client) updateDB(db databaseSchema) error {
 	dat, err := json.Marshal(db)
-	if err != nil { 
+	if err != nil {
 		return err
 	}
 	err = os.WriteFile(c.dbPath, dat, 0600)
 	if err != nil {
 		return err
 	}
+}
