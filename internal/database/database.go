@@ -55,3 +55,13 @@ func (c Client) readDB() (databaseSchema, error) {
 	err = json.Unmarshal(dat, &db)
 	return db, err
 }
+
+func (c Client) updateDB(db databaseSchema) error {
+	dat, err := json.Marshal(db)
+	if err != nil { 
+		return err
+	}
+	err = os.WriteFile(c.dbPath, dat, 0600)
+	if err != nil {
+		return err
+	}

@@ -16,21 +16,10 @@ func main() {
 	database.NewClient("github.com/BevansMath/SocialServer/internal/database")
 	const addr = "localhost:8080"
 	serv := http.Server{
-		Addr:    addr,
-		Handler: m,
-		//TLSConfig:         &tls.Config{},
+		Addr:         addr,
+		Handler:      m,
 		ReadTimeout:  30 * time.Second,
 		WriteTimeout: 30 * time.Second,
-		//IdleTimeout:       0,
-		//MaxHeaderBytes:    0,
-		//TLSNextProto:      map[string]func(*http.Server, *tls.Conn, http.Handler){},
-		//ConnState: func(net.Conn, http.ConnState) {
-		//},
-		//ErrorLog: &log.Logger{},
-		//BaseContext: func(net.Listener) context.Context {
-		//},
-		//ConnContext: func(ctx context.Context, c net.Conn) context.Context {
-		//},
 	}
 
 	fmt.Println("server started on", addr)
