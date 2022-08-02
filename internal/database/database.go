@@ -61,7 +61,7 @@ func (c Client) updateDB(db databaseSchema) error {
 	if err != nil {
 		return err
 	}
-	err = os.WriteFile(c.dbPath, dat, 0600)
+	err = ioutil.WriteFile(c.dbPath, dat, 0600)
 	if err != nil {
 		return err
 	}
