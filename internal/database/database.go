@@ -65,4 +65,5 @@ func (c Client) updateDB(db databaseSchema) error {
 	if err != nil {
 		return err
 	}
+	return nil
 }
