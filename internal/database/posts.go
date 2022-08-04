@@ -50,7 +50,7 @@ func (c Client) GetPosts(userEmail string) ([]Post, error) {
 		return nil, err
 
 	}
-	post := []Post{}
+	posts := []Post{}
 	for _, post := range db.Posts {
 		if post.UserEmail == userEmail {
 			posts = append(posts, post)

@@ -52,19 +52,19 @@ func main() {
 	}
 	fmt.Println("Confirmed removal of user...")
 
-	user, err := c.CreateUser("test@example.com", "password", "john doe", 18)
+	user, err = c.CreateUser("test@example.com", "password", "john doe", 18)
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println("user recreated", user)
 
-	post, err := c.CreatePost("test@example.com", string)
+	post, err := c.CreatePost("test@example.com", "The cat has FLEAS!!")
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println("post created", post)
 
-	secondPost, err := c.CreatedPost("test@example.com", string)
+	secondPost, err := c.CreatePost("test@example.com", "The fleas are EVERYWHERE!!!")
 	if err != nil {
 		log.Fatal(err)
 
