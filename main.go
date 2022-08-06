@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -36,7 +37,42 @@ func testHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("{}"))
 }
 
-func respondWithJSON(w http.ResponseWriter, code int, payload interface{})
-response, err := json.Marshal(payload)
-//deal with err here
-w.Write(dat)
+func testErrHandler(w http.ResponseWriter, r *http.Request) { // RespondWithErr test handler
+	respondWithJSON(w, 200, database.User{
+		Email: "test@example.com",
+	})
+}
+
+type errorBody struct {
+	Error string `json:"error"` // function takes err, create a new errorBody, then calls respondWithJSON function
+}
+
+func respondWithError(w http.ResponseWriter, code int, err error) { // API error handling
+	if err == nil {
+		log.Println("don't call respondWithError with a nil err")
+		return
+	}
+	log.Println(err)
+	respondWithJSON(w, code, errorBody{
+		Error: err.Error(),
+	})
+}
+
+func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) { //
+	w.Header().Set("Content-Type", "applicaton/json")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE")
+	if payload != nil {
+		response, err := json.Marshal(payload)
+		if err != nil {
+			log.Println("error marshalling", err)
+			w.WriteHeader(500)
+			response, _ := json.Marshal(errorBody{
+				Error: "error marshalling",
+			})
+			w.Write(response)
+			return
+		}
+		w.WriteHeader(code)
+		w.Write(response)
+	}
+}
