@@ -1,6 +1,8 @@
 #!/bin/sh
 
+echo "Enter your message"
 git add .
-git commit -m "Updates to SocialServer code"
-git push origin master
+read MESSAGE
+git commit -m "${MESSAGE}"
+git push  origin master
 

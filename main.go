@@ -29,6 +29,14 @@ func main() {
 }
 func testHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+	respondWithJSON(w, 200, database.User{
+		Email: "test@example.com",
+	})
 	w.WriteHeader(200)
 	w.Write([]byte("{}"))
 }
+
+func respondWithJSON(w http.ResponseWriter, code int, payload interface{})
+response, err := json.Marshal(payload)
+//deal with err here
+w.Write(dat)
