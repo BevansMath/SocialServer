@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 	"net/http"
@@ -29,18 +30,13 @@ func main() {
 
 }
 func testHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
 	respondWithJSON(w, 200, database.User{
 		Email: "test@example.com",
 	})
-	w.WriteHeader(200)
-	w.Write([]byte("{}"))
 }
 
 func testErrHandler(w http.ResponseWriter, r *http.Request) { // RespondWithErr test handler
-	respondWithJSON(w, 200, database.User{
-		Email: "test@example.com",
-	})
+	respondWithError(w, 500, errors.New("server error"))
 }
 
 type errorBody struct {
