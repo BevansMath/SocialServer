@@ -14,8 +14,11 @@ import (
 func main() {
 	m := http.NewServeMux()
 
+	m.HandleFunc("/err", testErrHandler)
 	m.HandleFunc("/", testHandler)
+
 	database.NewClient("github.com/BevansMath/SocialServer/internal/database")
+
 	const addr = "localhost:8080"
 	serv := http.Server{
 		Addr:         addr,
@@ -35,17 +38,17 @@ func testHandler(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-func testErrHandler(w http.ResponseWriter, r *http.Request) { // RespondWithErr test handler
-	respondWithError(w, 500, errors.New("server error"))
+func testErrHandler(w http.ResponseWriter, r *http.Request) {
+	respondWithError(w, 500, errors.New("server encountered a fatal error"))
 }
 
 type errorBody struct {
-	Error string `json:"error"` // function takes err, create a new errorBody, then calls respondWithJSON function
+	Error string `json:"error"`
 }
 
-func respondWithError(w http.ResponseWriter, code int, err error) { // API error handling
+func respondWithError(w http.ResponseWriter, code int, err error) {
 	if err == nil {
-		log.Println("don't call respondWithError with a nil err")
+		log.Println("dont call respondWithError with a nil err!")
 		return
 	}
 	log.Println(err)
@@ -54,9 +57,9 @@ func respondWithError(w http.ResponseWriter, code int, err error) { // API error
 	})
 }
 
-func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) { //
-	w.Header().Set("Content-Type", "applicaton/json")
-	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE")
+func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
 	if payload != nil {
 		response, err := json.Marshal(payload)
 		if err != nil {
