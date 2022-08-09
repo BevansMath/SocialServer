@@ -11,13 +11,27 @@ import (
 	"github.com/BevansMath/SocialServer/internal/database"
 )
 
+type apiConfig struct {
+	dbClient database.Client
+}
+
 func main() {
 	m := http.NewServeMux()
 
-	m.HandleFunc("/err", testErrHandler)
-	m.HandleFunc("/", testHandler)
+	const dbPath = "db.json" // Ensure the database exists
+	dbClient := database.NewClient(dbPath)
 
-	database.NewClient("github.com/BevansMath/SocialServer/internal/database")
+	err := dbClient.EnsureDB()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	apiCfg := apiConfig{ // Configure the endpoints between the client and the database
+		dbClient: dbClient,
+	}
+
+	m.HandleFunc("/users", apiCfg.endpointUsersHandler)
+	m.HandleFunc("/users/", apiCfg.endpointUsersHandler)
 
 	const addr = "localhost:8080"
 	serv := http.Server{
@@ -27,18 +41,19 @@ func main() {
 		WriteTimeout: 30 * time.Second,
 	}
 
-	fmt.Println("server started on", addr)
-	err := serv.ListenAndServe()
+	fmt.Println("server started on", addr) // This will block forever,
+	err = serv.ListenAndServe()            // Until the server has an unrecoverable error
 	log.Fatal(err)
 
 }
-func testHandler(w http.ResponseWriter, r *http.Request) {
+
+func testHandler(w http.ResponseWriter, r *http.Request) { // Tests the 200 OK! response
 	respondWithJSON(w, 200, database.User{
 		Email: "test@example.com",
 	})
 }
 
-func testErrHandler(w http.ResponseWriter, r *http.Request) {
+func testErrHandler(w http.ResponseWriter, r *http.Request) { // Tests 500 server error unrecoverable
 	respondWithError(w, 500, errors.New("server encountered a fatal error"))
 }
 
@@ -57,11 +72,11 @@ func respondWithError(w http.ResponseWriter, code int, err error) {
 	})
 }
 
-func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
+func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) { // Header payload information
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
 	if payload != nil {
-		response, err := json.Marshal(payload)
+		response, err := json.Marshal(payload) // Converts var type payload into json string for response header
 		if err != nil {
 			log.Println("error marshalling", err)
 			w.WriteHeader(500)

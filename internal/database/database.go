@@ -22,7 +22,7 @@ func NewClient(dbPath string) Client { // Initializes a new client, returns clie
 	}
 }
 
-func (c Client) EnsureDB() error {
+func (c Client) EnsureDB() error { // EnsureDB creates database file if it doesn't exist
 	_, err := ioutil.ReadFile(c.dbPath)
 	if errors.Is(err, os.ErrNotExist) {
 		return c.createDB()
@@ -31,7 +31,7 @@ func (c Client) EnsureDB() error {
 
 }
 
-func (c Client) createDB() error {
+func (c Client) createDB() error { // Creates database file
 	dat, err := json.Marshal(databaseSchema{
 		Users: make(map[string]User),
 		Posts: make(map[string]Post),
@@ -46,7 +46,7 @@ func (c Client) createDB() error {
 	return nil
 }
 
-func (c Client) readDB() (databaseSchema, error) {
+func (c Client) readDB() (databaseSchema, error) { // reads from database file
 	dat, err := ioutil.ReadFile(c.dbPath)
 	if err != nil {
 		return databaseSchema{}, err
@@ -56,7 +56,7 @@ func (c Client) readDB() (databaseSchema, error) {
 	return db, err
 }
 
-func (c Client) updateDB(db databaseSchema) error {
+func (c Client) updateDB(db databaseSchema) error { // Updates database file
 	dat, err := json.Marshal(db)
 	if err != nil {
 		return err
