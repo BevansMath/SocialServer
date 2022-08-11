@@ -14,7 +14,7 @@ func userIsEligible(email, password string, age int) error {
 	}
 	const minAge = 18
 	if age < 18 {
-		fmt.Errorf("age must be at least %v years old", minAge)
+		return fmt.Errorf("age must be at least %v years old", minAge)
 	}
 	return nil
 }
