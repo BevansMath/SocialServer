@@ -32,6 +32,8 @@ func main() {
 
 	m.HandleFunc("/users", apiCfg.endpointUsersHandler)
 	m.HandleFunc("/users/", apiCfg.endpointUsersHandler)
+	m.HandleFunc("/err", testErrHandler)
+	m.HandleFunc("/test", testHandler)
 
 	const addr = "localhost:8080"
 	serv := http.Server{
@@ -48,13 +50,13 @@ func main() {
 }
 
 func testHandler(w http.ResponseWriter, r *http.Request) { // Tests the 200 OK! response
-	respondWithJSON(w, 200, database.User{
+	respondWithJSON(w, 200, database.User{ // this is coming up as unused
 		Email: "test@example.com",
 	})
 }
 
 func testErrHandler(w http.ResponseWriter, r *http.Request) { // Tests 500 server error unrecoverable
-	respondWithError(w, 500, errors.New("server encountered a fatal error"))
+	respondWithError(w, 500, errors.New("server encountered a fatal error")) // also coming up as unused
 }
 
 type errorBody struct {
@@ -72,7 +74,7 @@ func respondWithError(w http.ResponseWriter, code int, err error) {
 	})
 }
 
-func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) { // Header payload information
+func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) { // Endpoint header payload information
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
 	if payload != nil {

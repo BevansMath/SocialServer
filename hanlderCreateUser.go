@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"net/http"
 	"strings"
 )
@@ -12,8 +13,11 @@ func (apiCfg apiConfig) handlerCreateUser(w http.ResponseWriter, r *http.Request
 	type parameters struct {
 		Name     string `json:"name"`
 		Age      int    `json:"age"`
+		Email    string `json:"email"`
 		Password string `json:"password"`
 	}
+	fmt.Println(r.Method) // debug statement
+
 	decoder := json.NewDecoder(r.Body)
 	params := parameters{}
 	err := decoder.Decode(&params)
