@@ -23,7 +23,7 @@ func (apiCfg apiConfig) handlerCreateUser(w http.ResponseWriter, r *http.Request
 		return
 	}
 
-	newUser, err := apiCfg.dbClient.CreateUser(params.Name, params.Age, params.Email, params.Password)
+	newUser, err := apiCfg.dbClient.CreateUser(params.Name, params.Password, params.Email, params.Age)
 	if err != nil {
 		respondWithError(w, http.StatusBadRequest, err)
 		return

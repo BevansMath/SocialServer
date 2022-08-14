@@ -25,7 +25,7 @@ func (apiCfg apiConfig) endpointUsersHandler(w http.ResponseWriter, r *http.Requ
 
 type parameters struct {
 	Name     string `json:"name"`
-	Age      int    `json:"age"`
-	Email    string `json:"email"`
 	Password string `json:"password"`
+	Email    string `json:"email"`
+	Age      int    `json:"age"`
 }
