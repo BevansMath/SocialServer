@@ -22,10 +22,3 @@ func (apiCfg apiConfig) endpointUsersHandler(w http.ResponseWriter, r *http.Requ
 		fmt.Println(r.Method) // debug statement
 	}
 }
-
-type parameters struct {
-	Name     string `json:"name"`
-	Password string `json:"password"`
-	Email    string `json:"email"`
-	Age      int    `json:"age"`
-}
