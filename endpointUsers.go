@@ -7,6 +7,7 @@ import (
 )
 
 func (apiCfg apiConfig) endpointUsersHandler(w http.ResponseWriter, r *http.Request) { // Create user endpoint
+	fmt.Println(r.Method)
 
 	switch r.Method {
 	case http.MethodGet:
@@ -19,6 +20,7 @@ func (apiCfg apiConfig) endpointUsersHandler(w http.ResponseWriter, r *http.Requ
 		apiCfg.handlerDeleteUser(w, r)
 	default:
 		respondWithError(w, 404, errors.New("method not supported"))
-		fmt.Println(r.Method) // debug statement
+
 	}
+
 }
