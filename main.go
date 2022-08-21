@@ -50,13 +50,13 @@ func main() {
 }
 
 func testHandler(w http.ResponseWriter, r *http.Request) { // Tests the 200 OK! response
-	respondWithJSON(w, 200, database.User{ // this is coming up as unused
+	respondWithJSON(w, 200, database.User{
 		Email: "test@example.com",
 	})
 }
 
 func testErrHandler(w http.ResponseWriter, r *http.Request) { // Tests 500 server error unrecoverable
-	respondWithError(w, 500, errors.New("server encountered a fatal error")) // also coming up as unused
+	respondWithError(w, 500, errors.New("server encountered a fatal error"))
 }
 
 type errorBody struct {
