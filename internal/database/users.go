@@ -66,7 +66,7 @@ func (c Client) UpdateUser(
 
 }
 
-// GetUser code goes here
+// Get User
 func (c Client) GetUser(email string) (User, error) {
 	db, err := c.readDB()
 	if err != nil {

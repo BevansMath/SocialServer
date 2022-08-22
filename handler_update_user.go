@@ -11,6 +11,7 @@ func (apiCfg apiConfig) handlerUpdateUser(w http.ResponseWriter, r *http.Request
 	userEmail := strings.TrimPrefix(r.URL.Path, "/users/")
 	type parameters struct {
 		Name     string `json:"name"`
+		Email    string `json:"email"`
 		Age      int    `json:"age"`
 		Password string `json:"password"`
 	}

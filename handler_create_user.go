@@ -26,10 +26,10 @@ func (apiCfg apiConfig) handlerCreateUser(w http.ResponseWriter, r *http.Request
 
 	newUser, err := apiCfg.dbClient.CreateUser(params.Name, params.Password, params.Email, params.Age)
 	if err != nil {
-
+		fmt.Println("Your parameters are bad and you should feel bad!")
 		respondWithError(w, http.StatusBadRequest, err)
 		return
 	}
-
+	fmt.Println("Your parameters are good, but don't get too excited...")
 	respondWithJSON(w, http.StatusCreated, newUser)
 }
