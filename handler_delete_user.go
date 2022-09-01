@@ -17,10 +17,10 @@ func (apiCfg apiConfig) handlerDeleteUser(w http.ResponseWriter, r *http.Request
 	}
 	err := apiCfg.dbClient.DeleteUser(userEmail)
 	if err != nil {
-		fmt.Println("Error 2, bad parameters")
+		fmt.Println("Error 2; check your parameters")
 		respondWithError(w, http.StatusBadRequest, err)
 		return
 	}
-	fmt.Println("If json body is empty, then you're good!")
+	fmt.Println("json body is empty, should be something good but isn't")
 	respondWithJSON(w, http.StatusOK, struct{}{})
 }
