@@ -10,6 +10,7 @@ import (
 func (apiCfg apiConfig) handlerDeleteUser(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Deleting user")
 	userEmail := strings.TrimPrefix(r.URL.Path, "/users/")
+	fmt.Println(userEmail)
 	if userEmail == "" {
 		fmt.Println("error 1, email empty")
 		respondWithError(w, http.StatusBadRequest, errors.New("no userEmail has been provided to handlerUpdateUser"))
