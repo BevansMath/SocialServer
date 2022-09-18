@@ -22,6 +22,6 @@ func (apiCfg apiConfig) handlerDeleteUser(w http.ResponseWriter, r *http.Request
 		respondWithError(w, http.StatusBadRequest, err)
 		return
 	}
-	fmt.Println("json body is empty, should be something good but isn't")
+	fmt.Println(apiCfg.dbClient.DeleteUser(userEmail))
 	respondWithJSON(w, http.StatusOK, struct{}{})
 }
