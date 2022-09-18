@@ -8,7 +8,6 @@ import (
 )
 
 func (apiCfg apiConfig) handlerDeleteUser(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Deleting user")
 	userEmail := strings.TrimPrefix(r.URL.Path, "/users/")
 	fmt.Println(userEmail)
 	if userEmail == "" {
@@ -18,7 +17,6 @@ func (apiCfg apiConfig) handlerDeleteUser(w http.ResponseWriter, r *http.Request
 	}
 	err := apiCfg.dbClient.DeleteUser(userEmail)
 	if err != nil {
-		fmt.Println("Error 2; check your parameters")
 		respondWithError(w, http.StatusBadRequest, err)
 		return
 	}
