@@ -1,0 +1,20 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+func eligibleUser(email, password string, age int) error {
+	if email == "" {
+		return errors.New("email cannot be empty")
+	}
+	if password == "" {
+		return errors.New("password cannot be empty")
+	}
+	const leastAge = 18
+	if leastAge < 18 {
+		return fmt.Errorf("age must be at least %v years old", leastAge)
+	}
+	return nil
+}
