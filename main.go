@@ -34,6 +34,8 @@ func main() {
 	m.HandleFunc("/users/", apiCfg.endpointUsersHandler)
 	m.HandleFunc("/err", testErrHandler)
 	m.HandleFunc("/test", testHandler)
+	m.HandleFunc("/posts", apiCfg.endpointPostHandler)
+	m.HandleFunc("/posts/", apiCfg.endpointPostHandler)
 
 	const addr = "localhost:8080"
 	serv := http.Server{
