@@ -32,11 +32,12 @@ func TestEligibleUser(t *testing.T) {
 		},
 		{
 			email:       "test3@example.com",
-			password:    "",
+			password:    "dirtyqwerty",
 			age:         16,
 			expectedErr: errors.New("age must be at least 18 years old"),
 		},
 	}
+
 	for _, tt := range tests {
 		err := eligibleUser(tt.email, tt.password, tt.age)
 		errString := ""
