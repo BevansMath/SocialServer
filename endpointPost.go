@@ -8,11 +8,11 @@ import (
 func (apiCfg apiConfig) endpointPostHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
-		apiCfg.handlerRetrievePost(w, r)
+		apiCfg.handlerDeletePost(w, r)
 	case http.MethodPost:
 		apiCfg.handlerCreatePost(w, r)
 	case http.MethodPut:
-		apiCfg.handlerUpdatePost(w, r)
+		apiCfg.handlerGetPost(w, r)
 	case http.MethodDelete:
 		apiCfg.handlerDeletePost(w, r)
 	default:
