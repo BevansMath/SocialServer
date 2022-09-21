@@ -9,8 +9,8 @@ This project is part of a personal project I am completing on boot.dev. I chose 
 # Installation
 TBD
 
-# Stability
-I plan on updating this code as new features become available. Plans for this project include a full workover of the existing database schema, and adding in an application interface to demonstrate front-end knowledge. 
+# Roadmap
+I plan on updating this code as new features become available. The database that I wrote from scratch will be replaced with an SQL database architecture.
 
 # Contributions
 I invite collaborators to find ways to update and improve the code through forking with the code, or submitting issues through GitHub. Please ensure that your tests pass, as well as the existing tests in the code. Please submit all code changes to the main (master) branch.
