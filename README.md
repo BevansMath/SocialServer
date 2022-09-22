@@ -6,8 +6,15 @@ The main goal of the social-server is to demonstrate knowledge of networking and
 # Motivation
 This project is part of a personal project I am completing on boot.dev. I chose this project due to the range of extensions and applications possible for this server. I see myself extending the database capabilities, as well as adding a front-end application interface that users can interact with. This will demonstrate knowledge of several different types of databases, including what database schema would work best for a given application. 
 
-# Installation
-TBD
+# Installation and Running
+```
+go install github.com/BevansMath/SocialServer
+```
+then
+```
+go build && ./SocialServer
+```
+The code provided should start a host server on port 8080. You can make calls to the server through API calls or through your local environments REST API.
 
 # Roadmap
 I plan on updating this code as new features become available. The database that I wrote from scratch will be replaced with an SQL database architecture.
