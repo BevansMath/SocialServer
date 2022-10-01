@@ -7,7 +7,6 @@ import (
 	"github.com/google/uuid"
 )
 
-//Post -
 type Post struct {
 	ID        string    `json:"id"`
 	CreatedAt time.Time `json:"createdAt"`
@@ -39,7 +38,7 @@ func (c Client) CreatePost(
 	if err != nil {
 		return Post{}, err
 	}
-	return post, err // know the difference between post and Post{}
+	return post, err
 
 }
 
