@@ -1,4 +1,4 @@
-# Social-Server (UNDER CONSTRUCTION)
+# Social-Server
 
 ![](https://github.com/BevansMath/SocialServer/blob/master/BackendServer.gif)
 
