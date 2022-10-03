@@ -1,5 +1,7 @@
 # Social-Server (UNDER CONSTRUCTION)
 
+![](https://github.com/BevansMath/SocialServer/blob/main/BackendServer.gif)
+
 # Goals
 The main goal of the social-server is to demonstrate knowledge of networking and database concepts. The main.go file first initializes a server client over HTTP and sends a 200 ok with a JSON payload once created. The main.go file calls the database to create and write to the database file in the internal directory. The user on the other end has the option of creating a profile and a post once they have explored the hypothetical application. The internal/database file houses the methods needed to create, update, and delete user profiles and posts, given some credentials. A sandbox was created to test the methods in both the main file and the database folders.
 
