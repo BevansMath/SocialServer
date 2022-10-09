@@ -26,11 +26,11 @@ The code provided should start a host server on port 8080. You can make calls to
 
 # Roadmap
 Future plans for this repository include, but are not limited to:
-..* Replacing the current database architecture with SQL, NoSQL, or PostgreSQL depending on use cases
-..* Adding options to archive posts, add images, and edit recent posts
-..* Update the unit tests
-..* Deploy the application in Docker
-..* Add restrictions on password syntax and a layer of security via password validation.
+* Replacing the current database architecture with SQL, NoSQL, or PostgreSQL depending on use cases
+* Adding options to archive posts, add images, and edit recent posts
+* Update the unit tests
+* Deploy the application in Docker
+* Add restrictions on password syntax and a layer of security via password validation.
 
 # Contributions
 I invite collaborators to find ways to update and improve the code through forking with the code, or submitting issues through GitHub. Please ensure that your tests pass, as well as the existing tests in the code. Please submit all code changes to the main (master) branch.
