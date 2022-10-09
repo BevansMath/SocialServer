@@ -35,6 +35,7 @@ func (c Client) CreatePost(
 		Text:      text,
 	}
 	db.Posts[id] = post
+	err = c.updateDB(db)
 	if err != nil {
 		return Post{}, err
 	}

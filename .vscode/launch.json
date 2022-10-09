@@ -5,11 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Attach to Process",
+            "type": "go",
+            "request": "attach",
+            "mode": "local",
+            "processId": 0
+        },
+
+        {
             "name": "Launch Package",
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "${handler_create_user.go}"
+            "program": "${main.go}"
         }
     ]
 }

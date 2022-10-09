@@ -57,7 +57,8 @@ func testHandler(w http.ResponseWriter, r *http.Request) { // Tests the 200 OK! 
 	})
 }
 
-func testErrHandler(w http.ResponseWriter, r *http.Request) { // Tests 500 server error unrecoverable
+//Tests 500 server error unrecoverable.
+func testErrHandler(w http.ResponseWriter, r *http.Request) {
 	respondWithError(w, 500, errors.New("server encountered a fatal error"))
 }
 

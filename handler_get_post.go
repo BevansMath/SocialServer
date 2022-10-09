@@ -10,8 +10,8 @@ func (apiCfg apiConfig) handlerGetPost(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("retrieving post")
 	userEmail := r.URL.Query().Get("userEmail")
 	if userEmail == "" {
-		fmt.Println("error, get request made for non-existent postID")
-		respondWithError(w, http.StatusBadRequest, errors.New("cannot make request without postID"))
+		fmt.Println("error, get request made for non-existent userID")
+		respondWithError(w, http.StatusBadRequest, errors.New("cannot make request without userEmail"))
 		return
 	}
 	posts, err := apiCfg.dbClient.GetPosts(userEmail)
