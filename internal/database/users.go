@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-//user
+//user required fields
 type User struct {
 	CreatedAt time.Time `json:"createdAt"`
 	Email     string    `json:"email"`
@@ -14,6 +14,7 @@ type User struct {
 	Age       int       `json:"age"`
 }
 
+// Create User
 func (c Client) CreateUser(
 	email, password, name string, age int,
 ) (User, error) {
@@ -39,7 +40,7 @@ func (c Client) CreateUser(
 	return user, err
 }
 
-// Update user here
+// Update user
 func (c Client) UpdateUser(
 	email, password, name string,
 	age int,
@@ -81,6 +82,7 @@ func (c Client) GetUser(email string) (User, error) {
 	return user, nil
 }
 
+// Delete User
 func (c Client) DeleteUser(email string) error {
 	db, err := c.readDB()
 	if err != nil {

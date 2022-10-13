@@ -5,6 +5,7 @@ import (
 	"testing"
 )
 
+// Unit Testing
 func TestEligibleUser(t *testing.T) {
 	var tests = []struct {
 		email       string

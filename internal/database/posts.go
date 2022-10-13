@@ -7,6 +7,7 @@ import (
 	"github.com/google/uuid"
 )
 
+// Post Fields
 type Post struct {
 	ID        string    `json:"id"`
 	CreatedAt time.Time `json:"createdAt"`
@@ -15,7 +16,6 @@ type Post struct {
 }
 
 // Create posts
-
 func (c Client) CreatePost(
 	userEmail, text string,
 ) (Post, error) {

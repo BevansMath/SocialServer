@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+// Get user post
 func (apiCfg apiConfig) handlerGetPost(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("retrieving post")
 	userEmail := r.URL.Query().Get("userEmail")

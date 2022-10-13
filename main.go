@@ -16,9 +16,11 @@ type apiConfig struct {
 }
 
 func main() {
+	// Start instance of server-side API
 	m := http.NewServeMux()
 
-	const dbPath = "db.json" // Ensure the database exists
+	// Ensure the database exists
+	const dbPath = "db.json"
 	dbClient := database.NewClient(dbPath)
 
 	err := dbClient.EnsureDB()
@@ -30,6 +32,7 @@ func main() {
 		dbClient: dbClient,
 	}
 
+	// Initialize the user and post endpoint handlers
 	m.HandleFunc("/users", apiCfg.endpointUsersHandler)
 	m.HandleFunc("/users/", apiCfg.endpointUsersHandler)
 	m.HandleFunc("/err", testErrHandler)
@@ -51,13 +54,14 @@ func main() {
 
 }
 
+// Tests Status code 200 OK! for exising email
 func testHandler(w http.ResponseWriter, r *http.Request) { // Tests the 200 OK! response
 	respondWithJSON(w, 200, database.User{
 		Email: "test@example.com",
 	})
 }
 
-//Tests 500 server error unrecoverable.
+//Tests 500 server error unrecoverable
 func testErrHandler(w http.ResponseWriter, r *http.Request) {
 	respondWithError(w, 500, errors.New("server encountered a fatal error"))
 }
@@ -77,11 +81,14 @@ func respondWithError(w http.ResponseWriter, code int, err error) {
 	})
 }
 
-func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) { // Endpoint header payload information
+// Endpoint header payload information
+func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
 	if payload != nil {
-		response, err := json.Marshal(payload) // Converts var type payload into json string for response header
+
+		// Converts var type payload into json string for response header
+		response, err := json.Marshal(payload)
 		if err != nil {
 			log.Println("error marshalling", err)
 			w.WriteHeader(500)

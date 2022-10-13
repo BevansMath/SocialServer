@@ -3,10 +3,10 @@
 ![](https://github.com/BevansMath/SocialServer/blob/master/BackendServer.gif)
 
 # Goals
-The main goal of the social-server is to demonstrate knowledge of networking and database concepts. The main.go file first initializes a server client over HTTP and sends a 200 ok with a JSON payload once created. The main.go file calls the database to create and write to the database file in the internal directory. The user on the other end has the option of creating a profile and a post once they have explored the hypothetical application. The internal/database file houses the methods needed to create, update, and delete user profiles and posts, given some credentials. A sandbox was created to test the methods in both the main file and the database folders.
+The main goal of the social-server is to provide a new or existing user a place to create posts and update their profile information. The main.go file first initializes a server client over HTTP and sends a 200 ok with a JSON payload once created. The main.go file calls the database to create and write to the database file in the internal directory. The user on the other end has the option of creating a profile and a post once they have explored the hypothetical application. The internal/database file houses the methods needed to create, update, and delete user profiles and posts, given some credentials. Unit tests were created to test invalid profile creation and update requests.
 
 # Motivation
-This project is part of a personal project I am completing on boot.dev. I chose this project due to the range of extensions and applications possible for this server. I see myself extending the database capabilities, as well as adding a front-end application interface that users can interact with. This will demonstrate knowledge of several different types of databases, including what database schema would work best for a given application. 
+This project is part of a personal project I chose on the boot.dev platform. I chose this project to gain a comprehensive understanding of HTTP and database management concepts, which solidified my understanding of the Go programming language. This project has many possible extensions, including but not limited to refactoring the database architecture, and creating a front-end application to complete the application.
 
 # Installation and Running
 Download the binary from the github repository

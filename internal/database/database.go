@@ -46,7 +46,8 @@ func (c Client) createDB() error { // Creates database file
 	return nil
 }
 
-func (c Client) readDB() (databaseSchema, error) { // reads from database file
+// Reads from database file, returns key-value field to endpoint handlers
+func (c Client) readDB() (databaseSchema, error) {
 	dat, err := ioutil.ReadFile(c.dbPath)
 	if err != nil {
 		return databaseSchema{}, err
@@ -56,7 +57,8 @@ func (c Client) readDB() (databaseSchema, error) { // reads from database file
 	return db, err
 }
 
-func (c Client) updateDB(db databaseSchema) error { // Updates database file
+// Writes to database file, returns updated db.json file
+func (c Client) updateDB(db databaseSchema) error {
 	dat, err := json.Marshal(db)
 	if err != nil {
 		return err

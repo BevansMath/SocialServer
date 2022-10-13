@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// Update user
 func (apiCfg apiConfig) handlerUpdateUser(w http.ResponseWriter, r *http.Request) {
 	userEmail := strings.TrimPrefix(r.URL.Path, "/users/")
 	type parameters struct {

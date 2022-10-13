@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// Delete user
 func (apiCfg apiConfig) handlerDeleteUser(w http.ResponseWriter, r *http.Request) {
 	userEmail := strings.TrimPrefix(r.URL.Path, "/users/")
 	fmt.Println(userEmail)

@@ -13,7 +13,7 @@ func (apiCfg apiConfig) endpointUsersHandler(w http.ResponseWriter, r *http.Requ
 		apiCfg.handlerGetUser(w, r)
 	case http.MethodPost:
 		apiCfg.handlerCreateUser(w, r)
-	case http.MethodPut:
+	case http.MethodPatch:
 		apiCfg.handlerUpdateUser(w, r)
 	case http.MethodDelete:
 		apiCfg.handlerDeleteUser(w, r)

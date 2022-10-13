@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+// Define post required fields
 func (apiCfg apiConfig) handlerCreatePost(w http.ResponseWriter, r *http.Request) {
 	type parameters struct {
 		UserEmail string `json:"userEmail"`

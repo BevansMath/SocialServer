@@ -5,6 +5,7 @@ import (
 	"fmt"
 )
 
+// Test cases for invalid user inputs
 func eligibleUser(email, password string, age int) error {
 	if email == "" {
 		return errors.New("email cannot be empty")

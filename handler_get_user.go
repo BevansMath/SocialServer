@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// Get user information
 func (apiCfg apiConfig) handlerGetUser(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Updating User")
 	userEmail := strings.TrimPrefix(r.URL.Path, "/users/")

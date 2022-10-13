@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+// Parameters needed to create user in db.json file
 func (apiCfg apiConfig) handlerCreateUser(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Creating user")
 	type parameters struct {

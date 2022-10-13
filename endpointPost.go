@@ -9,6 +9,8 @@ func (apiCfg apiConfig) endpointPostHandler(w http.ResponseWriter, r *http.Reque
 	switch r.Method {
 	case http.MethodGet:
 		apiCfg.handlerGetPost(w, r)
+	case http.MethodPatch:
+		//apiCfg.handlerUpdatePost(w, r)
 	case http.MethodPost:
 		apiCfg.handlerCreatePost(w, r)
 	case http.MethodDelete:

@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// Delete post from db.json file
 func (apiCfg apiConfig) handlerDeletePost(w http.ResponseWriter, r *http.Request) {
 	postID := strings.TrimPrefix(r.URL.Path, "/posts/")
 	if postID == "" {
